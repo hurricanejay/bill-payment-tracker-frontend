@@ -12,9 +12,11 @@ class App extends React.Component {
     this.setState({ payments: [...this.state.payments, bill]})
   }
 
+
   paidBill = (bill) => {
     this.setState({ payments: this.state.payments.filter(paymentItem => paymentItem !== bill)})
   }
+
 
   componentDidMount() {
     fetch('http://localhost:3000/bills')
@@ -33,7 +35,7 @@ class App extends React.Component {
         {/* {console.log(this.state.bills)} */}
         <Payment bills={this.state.payments} paidBill={this.paidBill}/>
         {/* {console.log(this.paidBill, 'function?')} */}
-
+  
         
       </div>
     );
