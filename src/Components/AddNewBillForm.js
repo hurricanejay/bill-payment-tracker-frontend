@@ -6,8 +6,8 @@ class AddNewBillForm extends Component {
   state = {
     company_name: "",
     amount: "",
+    payment_due: "",
     category: "",
-    payment_due_date: "",
   }
 
   handleChange = (event) => {
@@ -18,23 +18,9 @@ class AddNewBillForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     // this.setState({[event.target.name]: event.target.value})
-    fetch('http://localhost:3000/bills', {
-      
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'accept': 'application/json'
-      },
-      body: JSON.stringify(this.state)
-    })
-    .then(response =>  response.json())
-    .then(data => {
-      this.setState( console.log(data)
-      )
-    })
+   this.props.handleSubmit(this.state)
   }
   
-      
     
 
   render() {
@@ -45,7 +31,7 @@ class AddNewBillForm extends Component {
                   <input name="company_name" placeholder="Company Name" onChange={this.handleChange} value={this.state.company_name} />
                   <input name="amount" placeholder="Payment Amount" onChange={this.handleChange} value={this.state.payment_amount}/>
                   <input name="category" placeholder="Category" onChange={this.handleChange} value={this.state.category}/>
-                  <input name="payment_due_date" placeholder="Payment Due Date" onChange={this.handleChange} value={this.state.payment_due_date}/>
+                  <input name="payment_due" placeholder="Payment Due Date" onChange={this.handleChange} value={this.state.payment_due_date}/>
                   <button type="submit">Submit</button>
               </form>
 

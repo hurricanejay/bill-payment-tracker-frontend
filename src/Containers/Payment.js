@@ -5,10 +5,10 @@ class Payment extends React.Component {
   render() {
     //   {console.log(this.props.paidBill, 'in the payment container, it should be empty now')}
     return (
-      <div className="Payment">
-          <h3>Payments Made</h3>
+      <div className="col-4">
+          <h2>Payments Made</h2>
         {this.props.bills.map(bill => (
-          <Bill bill={bill} key={bill.id} clickHandler={this.props.paidBill}/>
+          <Bill bill={bill} key={bill.id} clickHandler={() => {}} buttonClicked={this.props.paidBill} handlePaid={this.props.handlePaid}/>
         ))}
       </div>
     );

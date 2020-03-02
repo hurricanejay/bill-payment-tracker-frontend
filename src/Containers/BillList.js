@@ -17,14 +17,14 @@ class BillList extends React.Component {
     // {console.log(this.props.bills, 'in the billlist container... YES')}
     console.log(this.props)
     return (
-      <div className="row">
-        <div className="col-8"></div>
 
+        <div className="col-8">
+        <h2>List of Bills</h2>
         {this.props.bills.map(bill => (
-          <Bill bill={bill} key={bill.id} clickHandler={this.props.addBill}  />
+          <Bill bill={bill} key={bill.id} clickHandler={this.props.addBill} isDefault = {true} />
         ))}
         <button onClick= {this.toggleForm}>{this.state.formOpen ? "Hide" : "Show"} New Bill Form</button>
-        {this.state.formOpen && <AddNewBillForm addToBillList={this.addPoemToState} />}
+        {this.state.formOpen && <AddNewBillForm addToBillList={this.addPoemToState} handleSubmit={this.props.handleSubmit}/>}
       </div>
     );
   }
